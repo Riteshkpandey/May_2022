@@ -12,25 +12,26 @@
  * @return {TreeNode}
  */
 var deleteNode = function(root, key) {
-    
     function findNode(root,k)
     {
         if(!root) return null;
-        if(root.val===k)
+        if(root.val == k)
             {
                 if(!root.left) return root.right;
                 if(!root.right) return root.left;
                 let node=root.right;
-                while(node.left) node=node.left;
+                while(node.left)
+                    node=node.left;
                 node.left=root.left;
                 return root.right;
             }
         if(root.val>k) root.left=findNode(root.left,k);
-        else root.right=findNode(root.right,k);
+        else
+            root.right=findNode(root.right,k);
         return root;
     }
     
-    return findNode(root,key);
     
+    return findNode(root,key);
     
 };
