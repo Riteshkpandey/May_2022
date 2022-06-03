@@ -28,7 +28,6 @@ var findMode = function(root) {
         maxi=Math.max(maxi,dict[root.val])
         check(root.right);
     }
-    console.log(dict,maxi)
     for(let [key,val] of Object.entries(dict))
         {
             if(dict[key]==maxi)
