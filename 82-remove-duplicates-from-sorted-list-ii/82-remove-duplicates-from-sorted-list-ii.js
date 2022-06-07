@@ -28,7 +28,7 @@ var deleteDuplicates = function(head) {
             if(!prev) {
                 head = curr;
             } else {    // if there is a prev unique value node, reset it's next pointer
-				// we do not change the prev node, since the current node itself can be having duplicate value
+				// we do not change the prev node, since the current node itself can be having duplicate value.
 				// so we will process the current node, until we identify it as having a unique value
                 prev.next = curr;    
             }
