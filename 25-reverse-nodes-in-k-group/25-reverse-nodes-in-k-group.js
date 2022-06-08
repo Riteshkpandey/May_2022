@@ -11,30 +11,35 @@
  * @return {ListNode}
  */
 var reverseKGroup = function(head, k) {
+    
     if(!head) return null;
-    let tail=head;
+    let curr=head;
     for(let i=1;i<k;i++)
         {
-            tail=tail.next;
-            if(!tail) return head;
+            curr=curr.next;
+            if(!curr) return head;
         }
-    let next1=tail.next;
-    tail.next=null;
-    reverse(head);
-    head.next=reverseKGroup(next1,k);
-    return tail;
+    let nextAfterK=curr.next;
+    curr.next=null;
+    reverseKElements(head);
+    head.next=reverseKGroup(nextAfterK,k);
     
+    return curr;
 };
 
-function reverse(curr)
+
+function reverseKElements(head)
 {
     let prev=null;
-    while(curr)
+    while(head)
         {
-            let temp=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=temp;
+            let temp=head.next;
+            head.next=prev;
+            prev=head;
+            head=temp;
         }
+    
     return prev;
+    
+    
 }
